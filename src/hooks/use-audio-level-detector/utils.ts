@@ -14,10 +14,6 @@ export function isAudioLevelExceedingThreshold({
   const average =
     dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length;
   const normalizedValue = average / 255;
-  console.log({
-    normalizedValue,
-    threshold,
-  });
 
   return normalizedValue > threshold;
 }

@@ -104,6 +104,13 @@ const useMediaStream = (
 
   async function fetchUserDevices() {
     try {
+      // ask for permission to access the user's media devices, with both audio and video
+      const permissions = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: true,
+      });
+      permissions.getTracks().forEach((track) => track.stop());
+
       const devices = await navigator.mediaDevices.enumerateDevices();
       setDevices(devices);
       setHasAuthorized(true);
